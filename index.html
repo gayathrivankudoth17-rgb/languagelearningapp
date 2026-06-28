@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LingoFlow</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+<!-- Splash Screen -->
+
+<div id="splash" class="screen active">
+
+<div class="logo">
+
+🌍
+
+</div>
+
+<h1>LingoFlow</h1>
+
+<p>Learn Languages Beautifully</p>
+
+</div>
+
+<!-- Welcome Screen -->
+
+<div id="welcome" class="screen">
+
+<div class="card">
+
+<h1>Welcome 👋</h1>
+
+<p>
+
+Master a new language with flashcards, quizzes,
+
+daily streaks and fun learning.
+
+</p>
+
+<button id="startBtn">
+
+Start Learning →
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- Language Selection Screen -->
+
+<div id="language" class="screen">
+
+<div class="card">
+
+<h1>Select Language 🌍</h1>
+
+<div class="language-grid">
+
+<div class="language-card" onclick="selectLanguage('English')">
+🇬🇧
+<p>English</p>
+</div>
+
+<div class="language-card" onclick="selectLanguage('Spanish')">
+🇪🇸
+<p>Spanish</p>
+</div>
+
+<div class="language-card" onclick="selectLanguage('French')">
+🇫🇷
+<p>French</p>
+</div>
+
+<div class="language-card" onclick="selectLanguage('Japanese')">
+🇯🇵
+<p>Japanese</p>
+</div>
+
+<div class="language-card" onclick="selectLanguage('German')">
+🇩🇪
+<p>German</p>
+</div>
+
+<div class="language-card" onclick="selectLanguage('Hindi')">
+🇮🇳
+<p>Hindi</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Dashboard Screen -->
+
+<div id="dashboard" class="screen">
+
+<div class="card">
+
+<h1>Welcome 👋</h1>
+<p id="todayDate"></p>
+
+<h2 id="selectedLanguage"></h2>
+<h2 id="clock"></h2>
+
+<div class="stats">
+
+<div class="stat-box">
+🔥
+<h3 id="streakValue">1</h3>
+<p>Day Streak</p>
+</div>
+
+<div class="stat-box">
+⭐
+<h3 id="xpValue">0</h3>
+<p>XP</p>
+<p id="quote"></p>
+</div>
+
+</div>
+
+<h3>Today's Progress</h3>
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<div class="menu">
+
+<button onclick="openVocabulary()">📚 Vocabulary</button>
+
+<button onclick="openFlashcards()">🃏 Flashcards</button>
+
+<button onclick="openQuiz()">❓ Quiz</button>
+<button onclick="openProgress()">
+
+📈 Progress
+
+</button>
+<button onclick="openProfile()">
+
+👤 Profile
+
+</button>
+
+<button>👤 Profile</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Vocabulary Screen -->
+
+<div id="vocabulary" class="screen">
+
+<div class="card">
+
+<h1>📚 Learn Vocabulary</h1>
+
+<h2 id="word">Apple 🍎</h2>
+
+<h3 id="meaning">Meaning: Manzana</h3>
+
+<p id="example">
+Example: I eat an apple every day.
+</p>
+
+<button onclick="saveFavourite()">❤️ Favourite</button>
+
+<button onclick="nextWord()">Next Word ➜</button>
+
+<button onclick="goDashboard()">⬅ Dashboard</button>
+
+</div>
+
+</div>
+
+<!-- Flashcard Screen -->
+
+<div id="flashcards" class="screen">
+
+<div class="card">
+
+<h1>🃏 Flashcards</h1>
+
+<div class="flashcard-container">
+
+<div class="flashcard" id="flashcard" onclick="flipCard()">
+
+<div class="front" id="frontText">
+Apple 🍎
+</div>
+
+<div class="back" id="backText">
+Manzana
+</div>
+
+</div>
+
+</div>
+
+<div class="flash-buttons">
+
+<button onclick="previousCard()">⬅ Previous</button>
+
+<button onclick="nextFlashcard()">Next ➡</button>
+
+</div>
+
+<button onclick="backDashboard()">
+🏠 Dashboard
+</button>
+
+</div>
+
+</div>
+<!-- Quiz Screen -->
+
+<div id="quiz" class="screen">
+
+<div class="card">
+
+<h1>🎯 Quiz Time</h1>
+
+<h2 id="question"></h2>
+
+<div id="options">
+
+<button onclick="checkAnswer(0)" class="option"></button>
+
+<button onclick="checkAnswer(1)" class="option"></button>
+
+<button onclick="checkAnswer(2)" class="option"></button>
+
+<button onclick="checkAnswer(3)" class="option"></button>
+
+</div>
+
+<h3 id="score">Score : 0</h3>
+
+<button onclick="goHome()">🏠 Dashboard</button>
+
+</div>
+
+</div>
+<!-- Result Screen -->
+
+<div id="result" class="screen">
+
+<div class="card">
+
+<h1>🎉 Congratulations!</h1>
+
+<h2 id="finalScore"></h2>
+
+<h3 id="earnedXP"></h3>
+
+<h3 id="bestScore"></h3>
+
+<div class="trophy">🏆</div>
+
+<button onclick="backToDashboard()">
+Continue →
+</button>
+
+</div>
+
+</div>
+<div class="bottom-nav">
+
+<button onclick="showDashboard()">🏠</button>
+
+<button onclick="openVocabulary()">📚</button>
+
+<button onclick="openFlashcards()">🃏</button>
+
+<button onclick="openQuiz()">❓</button>
+
+<button onclick="toggleTheme()">🌙</button>
+
+</div>
+<div id="progressScreen" class="screen">
+
+<div class="card">
+
+<h1>📈 Weekly Progress</h1>
+
+<h2>Lessons Completed</h2>
+<h2 id="badge"></h2>
+
+<div class="progress">
+
+<div style="width:85%;background:#00e676;height:100%;"></div>
+
+</div>
+
+<h3>🔥 Streak : 7 Days</h3>
+
+<h3>⭐ XP : 450</h3>
+
+<button onclick="showDashboard()">
+
+🏠 Dashboard
+
+</button>
+
+</div>
+
+</div>
+<!-- Profile Screen -->
+
+<div id="profile" class="screen">
+
+<div class="card">
+
+<h1>👤 My Profile</h1>
+
+<h2 id="profileName">Learner</h2>
+
+<h3 id="profileLanguage"></h3>
+
+<h3 id="profileXP"></h3>
+
+<h3 id="profileFavorite"></h3>
+
+<h3 id="profileBest"></h3>
+
+<button onclick="resetProgress()">
+
+🔄 Reset Progress
+
+</button>
+
+<br><br>
+
+<button onclick="showDashboard()">
+
+🏠 Dashboard
+
+</button>
+
+</div>
+
+</div>
+<footer>
+
+Made with ❤️ by Gayathri
+
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>
